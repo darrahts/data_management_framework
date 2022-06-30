@@ -2,6 +2,10 @@
           Enable timescale extension to significantly improve database performance
           
           Must do this BEFORE data is added to the data table
+          
+          number of partitions or interval depends on the specific application.
+          
+          see https://docs.timescale.com/api/latest/hypertable/create_hypertable/#create-hypertable 
 */
 
 
