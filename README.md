@@ -2,6 +2,21 @@
 
 This is a repository for the Data Management Framework - a generic, flexible, and extensible framework to build data-driven prognostics applications off of.   
 
+
+
+
+
+
+
+
+## References
+[A Data Management Framework & UAV Simulation Testbed for theStudy of System-level Prognostics Technologies](https://www.researchgate.net/publication/356517965_Data_Management_Framework_UAV_Simulation_Testbed_for_the_Study_of_System-level_Prognostics_Technologies)
+
+[A Data-Centric Approach to the Study of System-Level Prognostics for Cyber Physical Systems: Application to Safe UAV Operations](https://www.researchgate.net/publication/361487074_A_Data-Centric_Approach_to_the_Study_of_System-Level_Prog-_nostics_for_Cyber_Physical_Systems_Application_to_Safe_UAV_Operations)
+
+[Developing Deep Learning Models for System Remaining Useful Life Predictions: Application to Aircraft Engines](https://www.researchgate.net/publication/361487238_Developing_Deep_Learning_Models_for_System_Remaining_Useful_Life_Predictions_Application_to_Aircraft_Engines)
+
+
 <!--
 - [Database schema](#database-schema) intended for a PostgreSQL DBMS
 - [Python API](#python-api) to query the database
@@ -51,8 +66,6 @@ conda activate tfcpu
 
 ## [Data Exploration and Analysis](/notebooks)
 
-
-## References
 
 
 ## TODO
