@@ -23,10 +23,6 @@
 ------------------------------------------------------------------------------------------------
 
 
--- timescale improves database performance
-create extension if not exists timescaledb;
-
-
 /*	process_type_tb
 
 	brief: 
