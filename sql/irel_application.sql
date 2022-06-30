@@ -46,7 +46,16 @@ add column "water_temperature2" float;
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
 
-
+/*
+    enable timescale for cb_data_tb if timescale exists
+*/
+DO $$
+BEGIN 
+    IF EXISTS (select * from pg_available_extensions where name ilike 'timescaledb') THEN
+        select create_hypertable('cb_data_tb', 'dt', chunk_time_interval => interval '14 days');
+        select add_dimension('cb_data_tb', 'group_id', number_partitions => 4);
+    END IF;
+END $$;
 
 
 
