@@ -71,6 +71,7 @@ read -p "setup table schema? (y/n): " ans
 if [[ $ans = y ]]
 then
     psql -d $DB_NAME -f sql/create_framework_tables.sql -U $USER 
+    psql -d $DB_NAME -f sql/create_functions.sql -U $USER
 fi
 unset ans
 
