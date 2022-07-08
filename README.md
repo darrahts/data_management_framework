@@ -8,19 +8,64 @@ This is a repository for the Data Management Framework - a generic, flexible, an
 3. [optional] create a conda environment `conda create --name=datasci python=3.8 pandas jupyterlab scikit-learn psycopg2 seaborn tqdm pyarrow`
 
 ## The Framework
+<div style="text-align: justify">The framework is centered around abstracting the key features of all components, degradation,  or any other physical or non-physical "tangible" that generates data into _assets_ and _processes_. This decouples the implementation of specific component or degradation models from the way they are composed at the system level, as well as how they interact with processes and generate data. The framework was initially conceived to facilitate data generation simulation experiments where the primary challenges consisted of 
+
+- Requiring significant code changes when experimenting with different component or degradation models
+- Difficulty in linking generated data to a set of specific models and operating conditions
+- Difficulty in organizing the generated data in a manner that can be accessed from multiple dimensions (i.e. by component, time, operating conditions, etc)
+
+This framework can be used with  
+
+- simulations
+- real systems
+- existing datasets
+
+Moreover, the framework can be used with any number of systems and system types, components and component types, or processes and process types. This framework is a key driver in implementing data-driven maintenance and operation scheduling, which is a challenge that many organizations continue to face. The framework is also highly extensible, able to meet a wide variety of specific use cases, some of which are discussed in the [Examples](#examples) section.
+
+</div>
+
 
 ### Assets & Asset Types
+<div style="text-align: justify"> Assets and asset-types are at the center of the framework. Every physical "tangible" is an asset, and every asset has an asset-type. There can only be one instance of a given asset-type, however there can be any number of assets of an asset-type. As an example with a UAV system, there is only one type allowed for <i>motor_threephase</i>, but there can be multiple three-phase motors modelled, either with the same or different parameters, or any combination. 
+
+<p align="center">
+<img src="./figures/assets_base.png" alt='assets_base' width='300'/>
+</p>
+
+The Tarot T18 and DJI S1000 both have 8 three phase motors, but the parameters for both are different. The Tarot T18 and DJI S1000 are systems comprised of multiple components, and they themselves are also different assets with the same asset-type (<i>uav_octorotor</i>). This is where flexibility meets simplicity, and this type of organization in conjunction with key constraints suit a wide variety of applications. 
+
+
 
 ### Processes & Process Types
+Processes and process-types are analogous to assets and asset-types, however they are for non-physical "tangibles" that affect the system, components, and system operation. These can be <i>internal</i> processes like degradation, or <i>external</i> processes like wind. 
+
+<p align="center">
+<img src="./figures/processes_base.png" alt='processes_base' width='250'/>
+</p>
+Similar to assets and asset-types, there can only be one instance of a process-type, but multiple instances of that process. For example, there is only allowed to be one instance of <i>battery_charge_degradation</i>, but there can be multiple instances of this process, with any number of them having different parameters representing different degradation models for the same degradation type. 
 
 ### Data
+All assets and processes generate data, and this data is linked to the assets, processes, and <i>group</i> from which it was generated. The group is not required, but it organizes assets across another dimension (discussed in greater detail in the [Examples](#examples) section. 
+
+<p align="center">
+<img src="./figures/data_base.png" alt='processes_base' width='120'/>
+</p>
+
+Every generated data is also associated with a cycle, which takes on different meaning depending on the application. Application-specific data fields must be supplied by the user. 
+
+
+### Examples  
+1. <div style="text-align: justify"> The first example is a generic implementation of a single cyber physical system type that is comprised of multiple components. The Entity-Relationship (ER) diagram is shown on the left and depicts the "under the hood" organization of the system and components. The system and components are assets, and assets have an asset type. The system is comprised of multiple assets. This type of diagram is a useful abstraction of the System Composition (SC) diagram, shown on the right. There are actually two systems here, each unique, comprised of several components, also unique. The same component cannot be used on more than one system, but any number of components, component-types, systems, system-types can be modelled.</div>
+
+<p align="center">
+<img src="./figures/example.png" alt='processes_base'/>
+</p>
+
+2. Data generation with a simulated UAV
+3. Data organization with the N-CMAPSS dataset
+4. Data organization with electronics data
 
 ### API Usage
-
-### Example Use Cases  
-1. Data generation with a simulated UAV
-2. Data organization with the N-CMAPSS dataset
-3. Data organization with electronics data
 
 
 ## References
