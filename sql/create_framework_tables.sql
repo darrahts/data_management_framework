@@ -124,7 +124,7 @@ create table asset_type_tb(
 create table asset_tb(
 	"id" serial primary key not null,
 	"type_id" int not null references asset_type_tb(id),
-	"group_id" int not null references group_tb(id),
+	"group_id" int references group_tb(id),
 	"process_id" int references process_tb(id),
 	"owner" varchar(32) not null default(current_user),
 	"serial_number" varchar(32) unique not null default upper(substr(md5(random()::text), 0, 9)),
