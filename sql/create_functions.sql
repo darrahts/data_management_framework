@@ -15,7 +15,7 @@ create or replace function generate_table()
   returns trigger as 
    $$ 
     begin
-      execute format('create table "%s_%s_tb"(id serial primary key not null);', new."type", new."subtype");
+      execute format('create table "%s_%s_tb"(id int primary key not null references asset_tb(id));', new."type", new."subtype");
     return new;
   end;
   $$
