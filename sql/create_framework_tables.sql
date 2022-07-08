@@ -99,8 +99,9 @@ create table asset_type_tb(
 	"id" serial primary key not null,
 	"type" varchar(32) not null,
 	"subtype" varchar(32) not null,
+	"subtype2" varchar(32),
 	"description" varchar(256),
-	unique ("type", "subtype")
+	unique ("type", "subtype", "subtype2")
 );
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
