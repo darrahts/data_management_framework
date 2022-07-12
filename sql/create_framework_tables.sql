@@ -59,7 +59,7 @@ create table process_tb(
 	"id" serial primary key not null,
 	"type_id" int not null references process_type_tb,
 	"description" varchar(256) not null,
-    	"source" varchar(256) not null,
+	"source" varchar(256) not null,
 	"parameters" json not null,
 	unique("type_id", "description", "source")
 );

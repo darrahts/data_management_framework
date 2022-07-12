@@ -48,20 +48,39 @@ Similar to assets and asset-types, there can only be one instance of a process-t
 All assets and processes generate data, and this data is linked to the assets, processes, and <i>group</i> from which it was generated. The group is not required, but it organizes assets across another dimension (discussed in greater detail in the [Examples](#examples) section. 
 
 <p align="center">
-<img src="./figures/data_base.png" alt='processes_base' width='120'/>
+<img src="./figures/data_base.png" alt='data_base' width='120'/>
 </p>
 
 Every generated data is also associated with a cycle, which takes on different meaning depending on the application. Application-specific data fields must be supplied by the user. 
 
 
 ### Examples  
-1. <div style="text-align: justify"> The first example is a generic implementation of a single cyber physical system type that is comprised of multiple components. The Entity-Relationship (ER) diagram is shown on the left and depicts the "under the hood" organization of the system and components. The system and components are assets, and assets have an asset type. The system is comprised of multiple assets. This type of diagram is a useful abstraction of the System Composition (SC) diagram, shown on the right. There are actually two systems here, each unique, comprised of several components, also unique. The same component cannot be used on more than one system, but any number of components, component-types, systems, system-types can be modelled.</div>
+1. <div style="text-align: justify"> The first example is a generic implementation of a single cyber physical system that is comprised of multiple components. The Entity-Relationship (ER) diagram is shown on the left and depicts the "under the hood" organization of the system and components. This type of diagram is a useful abstraction of the System Composition (SC) diagram, shown on the right. The SC diagram shows us how many systems and components we have and how the individual components relate to the system. In this example, there are two systems, each unique, comprised of several components, also unique. The same component cannot be used on more than one system, but any number of components, component-types, systems, system-types can be modelled.</div>
 
 <p align="center">
-<img src="./figures/example.png" alt='processes_base'/>
+<img src="./figures/example.png" alt='example'/>
 </p>
 
-2. Data generation with a simulated UAV
+2. The next example shows the framework implemented with a simulated UAV system for data collection. The UAV is the system and all UAVs are stored in the *uav_tb*. The UAV is comprised of motors, a battery, and an airframe. Just as above, there can be any number of UAVs, motors, batteries, or airframes, and they can all have different parameters even. Running experiments with different combinations of components only requires changing the asset id of that component on the UAV. Then, any data generated will correctly link to the newly changed component. 
+
+<p align="center">
+<img src="./figures/uav_example.png" alt='uav_example' width='400'/>
+</p>
+
+Component degradation and wind effects are also modeled and implemented as depicted in the SC diagram below. First, the process types are defined:  
+
+- <i>charge_degradation</i>  
+- <i>capacitance_degradation</i>  
+- <i>motor_degradation</i>
+- <i>wind_gusts</i>
+
+Then the process models are defined and attached to the assets they affect. The degradation models are shown below, and it can be seen that there is a different degradation profile for each motor, however each profile is derived from the same underlying model. This is to correctly capture variations in usage-based degradation. 
+
+<p align="center">
+<img src="./figures/uav_processes.png" alt='uav_processes' width='400'/>
+</p>
+
+
 3. Data organization with the N-CMAPSS dataset
 4. Data organization with electronics data
 
