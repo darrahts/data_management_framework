@@ -60,7 +60,7 @@ if [[ $ans = y ]]
 then
     read -p "enter your password: " PASSWORD
     read -p "enter the database name: " DB_NAME
-    sudo -u postgres psql -f sql/setup_user_database.sql -v user="$USER" -v passwd="'$PASSWORD'" -v db_name="$DB_NAME"
+    sudo -u postgres psql -f sql/create_user_database.sql -v user="$USER" -v passwd="'$PASSWORD'" -v db_name="$DB_NAME"
 fi
 unset ans
 
