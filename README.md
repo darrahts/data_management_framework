@@ -3,8 +3,9 @@
 This is a repository for the Data Management Framework - a generic, flexible, and extensible framework to build data-driven prognostics applications off of. <discuss prognostics>
 
 ## Setup steps 
-1. clone the repository  `git clone https://github.com/darrahts/data_management_framework.git`  
-2. make [setup_database.sh](https://github.com/darrahts/data_management_framework/blob/main/setup_database.sh) executable and run it to setup the database and core tables `cd data_management_framework && chmod +x setup_database.sh`  
+1. clone the repository  `git clone https://github.com/darrahts/data_management_framework.git && cd data_management_framework`  
+2. make [setup_database.sh](setup_database.sh) executable and [install_timescale.sh](install_timescale.sh) executable as well (if desired).  `chmod +x setup_database.sh  && chmod +x install_timescale.sh`
+3. Run setup_database.sh to setup the database and core tables `./setup_database.sh`  
 3. [optional] create a conda environment `conda create --name=datasci python=3.8 pandas jupyterlab scikit-learn psycopg2 seaborn tqdm pyarrow`
 
 ## The Framework
